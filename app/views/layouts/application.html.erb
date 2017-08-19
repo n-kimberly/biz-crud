@@ -4,11 +4,23 @@
     <title>Bloccit</title>
     <%= csrf_meta_tags %>
 
+    <!-- The "viewport meta" tag added inside the <head> with a content attribute value of width=device-width, initial-scale=1 instructs browsers on small, high-pixel density screens (such as retina iPhones) to display our pages at a regular, readable size. Without this tag, our pages won't scale properly. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class = "container" >
+
+      <ul class = "nav nav-tabs" >
+        <!-- Looks like this when converted:
+        "<a href="/welcome/index">Home</a>" -->
+        <li><%= link_to "Home", welcome_index_path %></li>
+        <li><%= link_to "About", welcome_about_path %></li>
+      </ul>
+      <%= yield %>
+
+  </div>
   </body>
 </html>
