@@ -1,28 +1,34 @@
-<h1>Create New Post </h1>
+<h1>Create New Advertisement </h1>
 
 <div class = "row">
 
   <h4> Guidelines </h4>
   <ul>
     <li> Obscene content will be removed.</li>
-    <li> Posts inciting violence or harassment will be removed.</li>
-    <li> Phishing and/or advertising will be marked as spam.</li>
+    <li> Advertisements inciting violence or harassment will be removed.</li>
+    <li> Phishing will be marked as spam.</li>
   </ul>
 
   <div class = 'cold-md-8'>
-    <%= form_for @post do |f| %>
+    <%= form_for @advertisement do |f| %>
       <div class = "form-group">
         <%= f.label :title %>
         <%= f.text_field :title,
               class: 'form-control',
-              placeholder: "Enter post title" %>
+              placeholder: "Enter advertisement title" %>
       </div>
       <div class = "form-group">
-        <%= f.label :body %>
-        <%= f.text_area :body,
+        <%= f.label :copy %>
+        <%= f.text_area :copy,
               rows: 8,
               class: 'form-control',
               placeholder: "Enter content here" %>
+      </div>
+      <div class = "form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price,
+              class: 'form-control',
+              placeholder: "Enter advertisement price" %>
       </div>
       <div class = "form-group">
         <%= f.submit "Publish", class: 'btn btn-success' %>

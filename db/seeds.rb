@@ -9,11 +9,14 @@
 require 'random_data'
 
 50.times do
-
-# instructs the method to raise an error if there's a problem with the data we're seeding. Using create without a bang could fail without warning, causing the error to surface later.
   Post.create!(
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph
+  )
+  Advertisement.create!(
+    title: RandomData.random_sentence,
+    copy: RandomData.random_paragraph,
+    price: RandomData.random_number
   )
 end
 
@@ -31,3 +34,4 @@ Post.find_or_create_by(title: "Unique Title", body: "Unique Body")
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Advertisement.count} advertisements created"
