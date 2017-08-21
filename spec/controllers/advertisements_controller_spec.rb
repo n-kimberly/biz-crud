@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# include RandomData
-
 RSpec.describe AdvertisementsController, type: :controller do
 
   let (:my_advertisement) {
@@ -82,7 +80,6 @@ RSpec.describe AdvertisementsController, type: :controller do
       }
       expect(assigns(:advertisement)).to eq Advertisement.last
     end
-    # Expect to be redirected to newly created post (latest one).
     it "redirects to the new post" do
       post :create, params: {
         advertisement: {
@@ -94,4 +91,5 @@ RSpec.describe AdvertisementsController, type: :controller do
       expect(response).to redirect_to Advertisement.last
     end
   end
+  
 end
