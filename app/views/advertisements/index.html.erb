@@ -1,4 +1,4 @@
-<h1>All Advertisements</h1>
+<h1>All Advertisements <%= link_to "Create New Ad", new_advertisement_path, class: 'btn btn-success' %></h1>
 
 <% @advertisements.each do |advertisement| %>
   <div class = "media">
