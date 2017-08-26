@@ -18,6 +18,11 @@ require 'random_data'
     copy: RandomData.random_paragraph,
     price: RandomData.random_number
   )
+  Question.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    resolved: false
+  )
 end
 
 posts = Post.all
