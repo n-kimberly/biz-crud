@@ -11,7 +11,7 @@
     </ul>
 
     <div class = 'cold-md-8'>
-      <%= form_for @post do |f| %>
+      <%= form_for [@post.topic, @post] do |f| %>
         <div class = "form-group">
           <%= f.label :title %>
           <%= f.text_field :title,
@@ -26,7 +26,7 @@
                 placeholder: "Enter content here" %>
         </div>
         <div class = "form-group">
-          <%= f.submit "Publish", class: 'btn btn-success' %>
+          <%= f.submit "Update", class: 'btn btn-success' %>
       <% end %>
     </div>
 
