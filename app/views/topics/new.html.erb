@@ -10,28 +10,7 @@
   </ul>
 
   <div class = 'cold-md-8'>
-
-    <%= form_for @topic do |f| %>
-      <div class = "form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name,
-              class: 'form-control',
-              placeholder: "Enter topic title" %>
-      </div>
-      <div class = "form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description,
-              rows: 8,
-              class: 'form-control',
-              placeholder: "Enter description here" %>
-      </div>
-      <div class = "form-group">
-        <%= f.label :public, class: 'check_box' do %>
-          <%= f.check_box :public %> Public Topic
-        <% end %>
-      </div>
-        <%= f.submit "Publish", class: 'btn btn-success' %>
-    <% end %>
+    <%= render partial: 'form', locals: { topic: @topic } %>
   </div>
 
 </div>
