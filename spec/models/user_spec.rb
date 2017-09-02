@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
 
   let(:user) {
     User.create!(
-      name: "Bloccit User",
-      email: "user@bloccit.com",
+      name: "bloccit user",
+      email: "USER@bloccit.com",
       password: "password"
     )
   }
@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_secure_password }
 
   describe "attributes" do
-    it "should have name and email attributes" do
+    it "should have capitalized name and downcase email attributes" do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
     end
   end
