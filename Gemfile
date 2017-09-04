@@ -52,3 +52,5 @@ end
 gem 'bootstrap-sass'
 
 gem 'bcrypt'
+
+ruby '2.4.0'
