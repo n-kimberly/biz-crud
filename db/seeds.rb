@@ -8,6 +8,22 @@
 
 require 'random_data'
 
+5.times do
+  User.create!(
+    name: RandomData.random_name,
+    email: RandomData.random_email,
+    password: RandomData.random_sentence
+  )
+end
+
+users = User.all
+
+user = User.first
+user.update_attributes!(
+  email: 'kimberlyvnguyen@gmail.com', # replace this with your personal email
+  password: 'Cerulean'
+)
+
 15.times do
   Topic.create!(
     name: RandomData.random_sentence,
@@ -30,7 +46,8 @@ end
   Post.create!(
     topic:  topics.sample,
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    body: RandomData.random_paragraph,
+    user: users.sample
   )
   Advertisement.create!(
     title: RandomData.random_sentence,
@@ -56,6 +73,7 @@ end
 Post.find_or_create_by(title: "Unique Title", body: "Unique Body")
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Post.count} posts created"
