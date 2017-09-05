@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
+  has_many :sponsored_posts, dependent: :destroy
 
   before_save {
     self.email = email.downcase if email.present?
@@ -12,6 +13,10 @@ class User < ApplicationRecord
       adjusted_name << str.capitalize
     end
     self.name = adjusted_name.join(" ")
+  }
+
+  before_save {
+    self.role ||= :member
   }
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
@@ -26,5 +31,7 @@ class User < ApplicationRecord
 
 
   has_secure_password
-  
+
+  enum role: [:member, :admin]
+
 end

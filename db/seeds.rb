@@ -18,10 +18,17 @@ end
 
 users = User.all
 
-user = User.first
-user.update_attributes!(
-  email: 'kimberlyvnguyen@gmail.com', # replace this with your personal email
-  password: 'Cerulean'
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+
+member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
+  password: 'helloworld'
 )
 
 15.times do
@@ -32,15 +39,6 @@ user.update_attributes!(
 end
 
 topics = Topic.all
-
-10.times do
-  SponsoredPost.create!(
-    topic: topics.sample,
-    title: RandomData.random_sentence,
-    body: RandomData.random_paragraph,
-    price: RandomData.random_number
-  )
-end
 
 50.times do
   Post.create!(
