@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
-  before_action :require_sign_in, except: [:show]
-  before_action :authorize_user, except: [:show, :new, :create]
+  # If you want to do anything aside from render, you need to sign in.
+  before_action :require_sign_in, except: [:index, :show]
+  # If you want to update, you must be a the author, mod or admin.
+  before_action :authorize_update, only: [:edit, :update]
+  # If you want to create or destroy, you must be the author or admin.
+  before_action :authorize_destruction, only: :destroy
 
   def new
     @topic = Topic.find(params[:topic_id])
@@ -60,10 +64,18 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
-  def authorize_user
+  def authorize_update
+    post = Post.find(params[:id])
+    unless current_user == post.user || current_user.mod? || current_user.admin?
+      flash[:alert] = "If you want to update, you must be a the author, mod or admin."
+      redirect_to [post.topic, post]
+    end
+  end
+
+  def authorize_destruction
     post = Post.find(params[:id])
     unless current_user == post.user || current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
+      flash[:alert] = "If you want to  destroy, you must be the author or admin."
       redirect_to [post.topic, post]
     end
   end

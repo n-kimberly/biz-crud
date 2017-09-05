@@ -54,6 +54,26 @@ RSpec.describe User, type: :model do
       it "returns false for admin?" do
         expect(user.admin?).to be_falsey
       end
+      it "returns false for mod?" do
+        expect(user.mod?).to be_falsey
+      end
+    end
+
+    context "moderator user" do
+
+      before do
+        user.mod!
+      end
+
+      it "returns true for mod?" do
+        expect(user.mod?).to be_truthy
+      end
+      it "returns false for member?" do
+        expect(user.member?).to be_falsey
+      end
+      it "returns false for admin?" do
+        expect(user.admin?).to be_falsey
+      end
     end
 
     context "admin user" do
@@ -67,6 +87,9 @@ RSpec.describe User, type: :model do
       end
       it "returns false for member?" do
         expect(user.member?).to be_falsey
+      end
+      it "returns false for mod?" do
+        expect(user.mod?).to be_falsey
       end
     end
 

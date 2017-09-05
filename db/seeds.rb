@@ -25,6 +25,13 @@ admin = User.create!(
   role:     'admin'
 )
 
+mod = User.create!(
+  name:     'Mod User',
+  email:    'mod@example.com',
+  password: 'helloworld',
+  role:     'mod'
+)
+
 member = User.create!(
   name:     'Member User',
   email:    'member@example.com',
@@ -73,7 +80,6 @@ Post.find_or_create_by(title: "Unique Title", body: "Unique Body")
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
-puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} advertisements created"
