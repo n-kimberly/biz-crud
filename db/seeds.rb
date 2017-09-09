@@ -38,19 +38,21 @@ member = User.create!(
   password: 'helloworld'
 )
 
-15.times do
+15.times do |i|
+  i = i.to_s
   Topic.create!(
-    name: RandomData.random_sentence,
+    name: 'Topic ' + i,
     description: RandomData.random_paragraph
   )
 end
 
 topics = Topic.all
 
-50.times do
+50.times do |i|
+  i = i.to_s
   Post.create!(
     topic:  topics.sample,
-    title: RandomData.random_sentence,
+    title: 'Post ' + i,
     body: RandomData.random_paragraph,
     user: users.sample
   )
@@ -68,11 +70,12 @@ end
 
 posts = Post.all
 
-100.times do
+100.times do |i|
+  i = i.to_s
   Comment.create!(
     user: users.sample,
     post: posts.sample,
-    body: RandomData.random_paragraph
+    body: 'Comment ' + i + ' : ' + RandomData.random_paragraph
   )
 end
 
