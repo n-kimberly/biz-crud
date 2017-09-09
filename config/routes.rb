@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   resources :advertisements
 
   resources :topics do
-    resources :sponsored_posts, except: [:index]
     resources :posts, except: [:index]
+  end
+
+  resources :posts, only: [] do
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :questions
@@ -12,6 +15,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   post 'users/confirm' => 'users#confirm'
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   get 'about' => 'welcome#about'
 

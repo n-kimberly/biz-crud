@@ -1,4 +1,8 @@
-<h1> Topics <%= link_to "Create New Topic", new_topic_path, class: 'btn btn-success' %></h1>
+<h1> Topics
+  <% if user_is_authorized_for_topics_creation_destroy? %>
+    <%= link_to "Create New Topic", new_topic_path, class: 'btn btn-success' %>
+  <% end %>
+</h1>
 
 <div class = "row">
   <div class = "col-md-8">
