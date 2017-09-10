@@ -50,12 +50,20 @@ topics = Topic.all
 
 50.times do |i|
   i = i.to_s
-  Post.create!(
+  post = Post.create!(
     topic:  topics.sample,
     title: 'Post ' + i,
     body: RandomData.random_paragraph,
     user: users.sample
   )
+  post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+
+  rand(1..5).times {
+    post.votes.create!(
+      value: [-1, 1].sample,
+      user: users.sample
+    )
+  }
   Advertisement.create!(
     title: RandomData.random_sentence,
     copy: RandomData.random_paragraph,
@@ -87,3 +95,4 @@ puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} advertisements created"
+puts "#{Vote.count} votes created"

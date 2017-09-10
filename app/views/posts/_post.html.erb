@@ -1,6 +1,7 @@
 <div class = "col-md-8">
   <% @topic.posts %>
   <div class = "media">
+    <%= render partial: 'votes/voting', locals: { post: post } %>
     <div class = "media-body">
       <h4 class = "media-head">
         <%= link_to post.title, topic_post_path(@topic, post) %>
