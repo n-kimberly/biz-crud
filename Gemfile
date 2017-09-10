@@ -52,5 +52,6 @@ end
 gem 'bootstrap-sass'
 
 gem 'bcrypt'
+gem 'figaro', '1.0'
 
 ruby '2.4.0'
