@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>You favorited "<%= @post.title %>" and will receive updates of follow up discussion. </h1>
+    <p>
+      <%= link_to "Visit the Post at Bloccit", topic_post_url(@post.topic, @post) %>.
+    </p>
+  </body>
+</html>

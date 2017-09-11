@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   after_create :create_vote
+  after_create :create_favorite
 
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
@@ -37,6 +38,11 @@ class Post < ApplicationRecord
   private
   def create_vote
     user.votes.create(value: 1, post: self)
+  end
+  
+  def create_favorite
+    Favorite.create(post: self, user: self.user)
+    FavoriteMailer.new_post(self).deliver_now
   end
 
 end
