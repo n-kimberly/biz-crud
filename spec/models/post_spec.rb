@@ -93,6 +93,18 @@ RSpec.describe Post, type: :model do
       end
     end
 
+    describe "create post callback" do
+      it "automatically favorites post and associates favorite with user" do
+        post = topic.posts.create!(
+          title: RandomData.random_sentence,
+          body: RandomData.random_paragraph,
+          user: user
+        )
+        expect(post.favorites.first.user).to eq(post.user)
+        post.save
+      end
+    end
+
   end
 
 end
