@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
   def new
-
   end
 
   def create
@@ -11,15 +9,14 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome, #{user.name}!"
       redirect_to root_path
     else
-      flash.now[:alert] = "Invalid email/password combination."
+      flash.now[:alert] = 'Invalid email/password combination'
       render :new
     end
   end
 
   def destroy
     destroy_session(current_user)
-    flash[:notice] = "You've been signed out- come back soon!"
+    flash[:notice] = "You've been signed out, come back soon!"
     redirect_to root_path
   end
-
 end

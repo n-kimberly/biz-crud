@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   default_scope { order('rank DESC') }
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   validates :topic, presence: true
   validates :user, presence: true
@@ -39,7 +40,7 @@ class Post < ApplicationRecord
   def create_vote
     user.votes.create(value: 1, post: self)
   end
-  
+
   def create_favorite
     Favorite.create(post: self, user: self.user)
     FavoriteMailer.new_post(self).deliver_now

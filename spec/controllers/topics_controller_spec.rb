@@ -5,10 +5,7 @@ include SessionsHelper
 RSpec.describe TopicsController, type: :controller do
 
   let (:my_topic) {
-    Topic.create!(
-      name:  RandomData.random_sentence,
-      description:   RandomData.random_paragraph
-    )
+    create(:topic)
   }
 
   context "guest" do
