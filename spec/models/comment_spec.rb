@@ -15,11 +15,7 @@ RSpec.describe Comment, type: :model do
   }
 
   let(:comment) {
-    Comment.create!(
-      body: 'Comment Body',
-      post: post,
-      user: user
-    )
+    create(:comment, body: "Comment Body")
   }
 
   it { is_expected.to belong_to(:post) }

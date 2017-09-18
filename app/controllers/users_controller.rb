@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.visible_to(current_user)
+    # SHow list of favorited posts
+    @favposts = @user.favposts.visible_to(current_user)
+    # @favorites = @user.favorites.visible_to(current_user)
   end
 
   def create

@@ -19,7 +19,9 @@ RSpec.describe VotesController, type: :controller do
     create(:post, topic: my_topic, user: other_user)
   }
 
-  let(:my_vote) { Vote.create!(value: 1) }
+  let(:my_vote) {
+    create(:vote, value: 1)
+  }
 
   context "guest" do
 

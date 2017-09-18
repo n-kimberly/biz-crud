@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favposts, through: :favorites, source: :post, dependent: :destroy
 
   before_save {
     self.email = email.downcase if email.present?

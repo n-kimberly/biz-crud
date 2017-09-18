@@ -1,14 +1,25 @@
-
-
-<div class="media">
-  <%= render partial: 'votes/voting', locals: { post: post } %>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= link_to post.title, topic_post_path(post.topic, post) %>
-    </h4>
-    <small>
-      submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
-      <%= post.comments.count %> Comments
-    </small>
+<br />
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <%= render partial: 'votes/voting', locals: { post: post } %>
+      <% if @user %>
+        <% avatar_url = @user.avatar_url(48) %>
+        <% if avatar_url %>
+          <div class="media-left">
+            <%= image_tag avatar_url, class: 'media-object' %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="media-body">
+        <h5 class="media-heading">
+          <%= link_to post.title, topic_post_path(post.topic, post) %>
+        </h5>
+        <small>
+          submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br />
+          <%= post.comments.count %> Comments
+        </small>
+      </div>
+    </div>
   </div>
 </div>

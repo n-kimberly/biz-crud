@@ -20,11 +20,7 @@ RSpec.describe CommentsController, type: :controller do
   }
 
   let(:my_comment) {
-    Comment.create!(
-      body: 'Comment Body',
-      post: my_post,
-      user: my_user
-    )
+    create(:comment, post: my_post, user: my_user)
   }
 
   context "guests can't create or destroy comments" do
