@@ -3,26 +3,15 @@ require 'rails_helper'
 RSpec.describe Favorite, type: :model do
 
   let(:topic) {
-    Topic.create!(
-      name: RandomData.random_sentence,
-      description: RandomData.random_paragraph
-    )
+    create(:topic)
   }
 
   let(:user) {
-    User.create!(
-      name: "Bloccit User",
-      email: "user@bloccit.com",
-      password: "helloworld"
-    )
+    create(:user)
   }
 
   let(:post) {
-    topic.posts.create!(
-      title: RandomData.random_sentence,
-      body: RandomData.random_paragraph,
-      user: user
-    )
+    create(:post)
   }
 
   let(:favorite) {

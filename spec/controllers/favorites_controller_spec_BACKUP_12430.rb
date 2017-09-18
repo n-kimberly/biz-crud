@@ -62,7 +62,10 @@ RSpec.describe FavoritesController, type: :controller do
         expect(response).to redirect_to([my_topic, my_post])
       end
       it 'creates a favorite for the current user and specified post' do
+<<<<<<< HEAD
+=======
         expect(my_user.favorites.find_by_post_id(other_post.id)).to be_nil
+>>>>>>> checkpoint-31-public-profiles
         post :create, params: {
           post_id: other_post.id
         }
@@ -77,10 +80,31 @@ RSpec.describe FavoritesController, type: :controller do
         expect(response).to redirect_to([my_topic, my_post])
       end
       it 'destroys the favorite for the current user and post' do
+<<<<<<< HEAD
+
+        diff_user = User.create!(
+          name: "other bloccit user",
+          email: "OTHERUSER@bloccit.com",
+          password: "password"
+        )
+        diff_post = my_topic.posts.create!(
+          title: RandomData.random_sentence,
+          body: RandomData.random_paragraph,
+          user: diff_user
+        )
+        favorite = my_user.favorites.where(post: diff_post).create
+
+        delete :destroy, params: {
+          post_id: diff_post.id,
+          id: favorite.id
+        }
+        expect(my_user.favorites.find_by_post_id(diff_post.id)).to be_nil
+=======
         favorite = my_user.favorites.where(post: other_post).create
         expect( my_user.favorites.find_by_post_id(other_post.id) ).not_to be_nil
         delete :destroy, params: { post_id: other_post.id, id: favorite.id }
         expect( my_user.favorites.find_by_post_id(other_post.id) ).to be_nil
+>>>>>>> checkpoint-31-public-profiles
       end
     end
 
