@@ -38,7 +38,7 @@ member = User.create!(
   password: 'helloworld'
 )
 
-15.times do |i|
+5.times do |i|
   i = i.to_s
   Topic.create!(
     name: 'Topic ' + i,
