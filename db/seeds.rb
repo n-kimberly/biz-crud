@@ -7,83 +7,76 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'random_data'
+require 'faker'
+include Faker
 
 5.times do
   User.create!(
-    name: RandomData.random_name,
-    email: RandomData.random_email,
-    password: RandomData.random_sentence
+    name: Name.unique.name,
+    email: Internet.email,
+    password: 'password'
   )
 end
 
 users = User.all
 
 admin = User.create!(
-  name:     'Admin User',
-  email:    'admin@example.com',
-  password: 'helloworld',
-  role:     'admin'
+  name: "Suited Admin",
+  email: 'suited-admin@example.com',
+  password: 'password',
+  role: 'admin'
 )
 
 mod = User.create!(
-  name:     'Mod User',
-  email:    'mod@example.com',
-  password: 'helloworld',
-  role:     'mod'
+  name: "Executive Moderator",
+  email: 'executive-moderator@example.com',
+  password: 'password',
+  role: 'mod'
 )
 
 member = User.create!(
-  name:     'Member User',
-  email:    'member@example.com',
-  password: 'helloworld'
+  name: "Standard Bro",
+  email: 'standard-bro@example.com',
+  password: 'password',
+  role: 'member'
 )
 
-5.times do |i|
-  i = i.to_s
+10.times do |i|
+  Config.random = Random.new(i)
+  bz = Company.buzzword
   Topic.create!(
-    name: 'Topic ' + i,
-    description: RandomData.random_paragraph
+    name: bz.capitalize,
+    description: "Posts pertaining to #{bz} things"
   )
 end
 
 topics = Topic.all
 
 50.times do |i|
-  i = i.to_s
   post = Post.create!(
     topic:  topics.sample,
-    title: 'Post ' + i,
-    body: RandomData.random_paragraph,
+    title: Company.bs.capitalize,
+    body: "#{HowIMetYourMother.catch_phrase}! #{HitchhikersGuideToTheGalaxy.quote}.. #{HitchhikersGuideToTheGalaxy.quote}",
     user: users.sample
   )
   post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
 
-  rand(1..5).times {
+  rand(1..50).times {
     post.votes.create!(
       value: [-1, 1].sample,
       user: users.sample
     )
   }
-  Advertisement.create!(
-    title: RandomData.random_sentence,
-    copy: RandomData.random_paragraph,
-    price: RandomData.random_number
-  )
-  Question.create!(
-    title: RandomData.random_sentence,
-    body: RandomData.random_paragraph,
-    resolved: false
-  )
 end
 
 posts = Post.all
 
-100.times do |i|
+200.times do |i|
   i = i.to_s
   Comment.create!(
     user: users.sample,
     post: posts.sample,
-    body: 'Comment ' + i + ' : ' + RandomData.random_paragraph
+    body: VentureBros.quote
   )
 end
 
@@ -94,5 +87,4 @@ puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
-puts "#{Advertisement.count} advertisements created"
 puts "#{Vote.count} votes created"

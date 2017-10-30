@@ -1,15 +1,15 @@
-# Bloccit
+# Biz CRUD
 
-### Bloccit is a Reddit-like application meant to teach CRUD fundamentals
+### Biz CRUD is a Reddit-like application meant to teach CRUD fundamentals
 
-At Bloccit, users can sign up and sign in to create, comment, favorite, and vote on posts as well as receive updates on comments on their favorites through email.
+At Biz CRUD, users can sign up and sign in to create, comment, favorite, and vote on posts as well as receive updates on comments on their favorites through email.
 
-[Sample Deployed at Heroku](http://bloccit-nykimberly.herokuapp.com/)
+[Sample Deployed at Heroku](https://biz-crud.herokuapp.com/)
 
 ## Project Objectives
 
 - Users can sign up for a free account by providing a user name, password and email
-- Users can sign in and out of Bloccit
+- Users can sign in and out of Biz CRUD
 - Users can view topics and posts
 - Users can comment on posts
 - Users can create new posts and edit posts they own
@@ -17,9 +17,9 @@ At Bloccit, users can sign up and sign in to create, comment, favorite, and vote
 - Users can favorite any post and be emailed with updates on that post
 - User's profile displays their posts and comments
 - Users can add a Gravatar to their profile
-- User roles available: admin or standard user
+- User roles available: admin, moderator, and standard
 - Admins can delete and create any topic or post
-- Development database is seeded automatically with users, topics and posts
+- Development database is seeded automatically with users, topics, and posts
 
 ## Built With
 

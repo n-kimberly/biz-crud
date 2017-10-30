@@ -13,6 +13,71 @@
  *= require_tree .
  *= require_self
  */
-// to integrate the newly installed bootstrap with our application
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.red {
+    color: red;
+}
+.green {
+    color: green;
+}
+
+h1, h2 {
+  font-family: 'Marcellus SC', serif;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: url('/assets/topics-bg-1.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+}
+
+img {
+  max-width:100%;
+  max-height:100%;
+}
+
+.container {
+  text-align: left;
+  width: 80%;
+}
+
+#header {
+  padding-top: 4rem;
+  background: url('/assets/biz-bg-3.png');
+  background-position: center;
+  background-size: cover;
+  text-shadow: 0 3px 5px rgba(0,0,0,.4);
+  width: 100%;
+  color: white;
+  height: 35rem;
+}
+
+#banner {
+  padding-top: 1rem;
+  color: #154360;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,.4);
+  height: 7rem;
+  width: 100%;
+}
+
+#about {
+  text-shadow: 0 1px 3px rgba(0,0,0,.4);
+  text-align: center;
+  color: #154360;
+  width: 100%;
+  align-content: center;
+}
+
+.glyphicon {
+  padding-right:1em;
+  &.glyphicon-chevron-up,
+  &.glyphicon-chevron-down {
+    padding-right: 0em;
+  }
+}

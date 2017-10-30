@@ -1,6 +1,6 @@
 <h1> Topics
     <% if user_is_authorized_for_topics_creation_destroy? %>
-      <%= link_to "Create New Topic", new_topic_path, class: 'btn btn-success' %>
+      <%= link_to "Create Topic", new_topic_path, class: 'btn btn-primary' %>
     <% end %>
 </h1>
 <% if current_user %>
@@ -8,10 +8,7 @@
     <%= render @topics %>
   </div>
 <% else %>
-  <h4 class = "bg-danger">
-    Sign in to view topics, posts, and comments! <br />
-  </h4>
-  <h4 class = "bg-success">
-    Feel free to login at "admin@example.com" with "helloworld" to browse around.
+  <h4>
+    You will need to sign in to view this page. <br />
   </h4>
 <% end %>

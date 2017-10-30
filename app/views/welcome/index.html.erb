@@ -1,26 +1,38 @@
-<div class = "jumbotron">
-  <h1> Bloccit </h1>
-  <p> Bloccit is a resource for sharing links with your friends! </p>
+<div class="container" id="header">
+  <h1> Biz CRUD </h1>
+  <h3> Share business articles<br /> with your friends! </h3>
+  <br />
   <% if current_user %>
-    <p>  Welcome to Bloccit! </p>
+    <h4>  Welcome, <%= current_user.name %>. </h4>
   <% else %>
     <%= link_to "Sign In", new_session_path, class: 'btn btn-primary' %> or
-    <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> to engage with our community today.
+    <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> today.
   <% end %>
-    </p>
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-    <h2>Solves world hunger</h2>
-    <p>Bloccit will deliver food and water to those in need, all over the world.</p>
-  </div>
-  <div class="col-md-4">
-    <h2>Eliminates poverty</h2>
-    <p>Bloccit will deliver money and education to those in need, all over the world.</p>
-  </div>
-  <div class="col-md-4">
-    <h2>Makes you better looking</h2>
-    <p>Bloccit will make men look like Ryan Gosling and women look like Shakira.</p>
+<div class="container" id="banner">
+  <h2> Meet our team </h2>
+</div>
+
+<div class = "container" id="about">
+  <div class="row">
+    <div class="col-md-4" id="box">
+      <h4>Suited Admin</h4>
+      <h4><em>I am the Suited Admin, an undisputed ROI Aficionado.</em></h4>
+      <img src="assets/suited-admin.jpg" alt="Suited Admin" height="200" width="200">
+      <p>email: suited-admin@example.com <br /> password: password</p>
+    </div>
+    <div class="col-md-4" id="box">
+      <h4>Executive Moderator</h4>
+      <h4><em>I've got one goal, one passion - Workflow.</em></h4>
+      <img src="assets/ex-mod.png" alt="Executive Moderator" height="200" width="200">
+      <p>email: executive-moderator@example.com <br /> password: password</p>
+    </div>
+    <div class="col-md-4" id="box">
+      <h4>Standard Bro</h4>
+      <h4><em>I am a Disruptive Radical Brogramming Ninja.</em></h4>
+      <img src="assets/tech-bro.png" alt="Tech Bronut" height="200" width="200">
+      <p>email: standard-bro@example.com <br /> password: password</p>
+    </div>
   </div>
 </div>

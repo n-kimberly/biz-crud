@@ -39,7 +39,7 @@ class TopicsController < ApplicationController
     @topic.assign_attributes(topic_params)
 
     if @topic.save
-      flash[:notice] = "topic was updated."
+      flash[:notice] = "Topic was updated."
       redirect_to @topic
     else
       flash.now[:alert] = "There was an error saving the topic. Please try again."
